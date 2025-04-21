@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | Rolsa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #006635;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body.dark-mode {
+            background-color: #333;
+            color: beige;
+        }
+        header {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 10%;
+            background-color: white;
+            color: #737373;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        nav a {
+            color: #737373;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16.2px;
+        }
+        nav a img {
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+        }
+        .auth-container {
+            background-color: #006635;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        body.dark-mode .auth-container {
+            background-color: #444;
+        }
+        .auth-container h2 {
+            font-size: 34px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .auth-container input[type="text"],
+        .auth-container input[type="email"],
+        .auth-container input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .auth-container input[type="submit"] {
+            background-color: #00bf63;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 90%;
+        }
+        .auth-container input[type="submit"]:hover {
+            background-color: #00bf63;
+        }
+        .auth-container .toggle-link {
+            display: block;
+            margin-top: 10px;
+            color: #00bf63;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .auth-container .toggle-link:hover {
+            text-decoration: underline;
+        }
+        .bottom-buttons {
+            display: flex;
+            justify-content: center;
+            width: 80%;
+            max-width: 1100px;
+            padding: 20px 0;
+        }
+        .bottom-buttons button {
+            padding: 10px 20px;
+            background: white;
+            color: #006635;
+            border: 2px solid #006635;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 17px;
+            font-weight: bold;
+        }
+        .bottom-buttons button:hover {
+            background: #00bf63;
+            color: white;
+        }
+        footer {
+            text-align: center;
+            width: 100%;
+            padding: 15px;
+            background: white;
+            color: black;
+            font-weight: bold;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="" alt="Rolsa Technologies Logo">
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About Us</a>
+            <a href="/educational">Educational</a>
+            <a href="/faq">FAQ</a>
+            <a href="/products">Products</a>
+            <a href="/sign">
+                <img src="https://www.svgrepo.com/show/456992/account.svg" alt="User Icon">
+            </a>
+        </nav>
+    </header>
+
+    <div class="auth-container">
+        <div id="login-form">
+            <h2>Login</h2>
+            <form method="POST">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="submit" value="Login">
+            </form>
+            <a class="toggle-link" onclick="toggleForms()">Don't have an account? Sign up</a>
+        </div>
+        <div id="signup-form" style="display:none;">
+            <h2>Sign Up</h2>
+            <form method="POST">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+                <input type="submit" value="Sign Up">
+            </form>
+            <a class="toggle-link" onclick="toggleForms()">Already have an account? Login</a>
+        </div>
+    </div>
+
+    <!-- Only keeping the Accessibility button -->
+    <div class="bottom-buttons">
+        <button onclick="toggleAccessibility()">Accessibility</button>
+    </div>
+
+    <footer>
+        Footer
+    </footer>
+
+    <script>
+        function toggleForms() {
+            const loginForm = document.getElementById('login-form');
+            const signupForm = document.getElementById('signup-form');
+            loginForm.style.display = loginForm.style.display === 'none' ? 'block' : 'none';
+            signupForm.style.display = signupForm.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function toggleAccessibility() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+
+
