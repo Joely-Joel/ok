@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultation | Rolsa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #006635;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        header {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 10%;
+            background-color: white;
+            color: #737373;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        nav a {
+            color: #737373;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16.2px;
+        }
+        nav a img {
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 80%;
+            max-width: 1100px;
+            padding: 40px 0;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .about-text {
+            flex: 1;
+            max-width: 48%;
+        }
+        .about-text h2 {
+            font-size: 34px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .about-text p {
+            font-size: 15.9px;
+            line-height: 1.5;
+        }
+        .about-images {
+            flex: 2;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .about-images div {
+            text-align: center;
+        }
+        .about-images img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .info-box {
+            width: 100%;
+            background-color: #ffffff;
+            color: #006635;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            margin-top: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s, color 0.3s;
+        }
+        .info-box h3 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .info-box ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        .info-box ul li {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .info-box:hover {
+            background: #00bf63;
+            color: white;
+        }
+        .bottom-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            width: 80%;
+            max-width: 1100px;
+            padding: 20px 0;
+            margin-top: 20px;
+        }
+        .bottom-buttons button {
+            padding: 10px 20px;
+            background: white;
+            color: #006635;
+            border: 2px solid #006635;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 17px;
+            font-weight: bold;
+            transition: background 0.3s, color 0.3s;
+        }
+        .bottom-buttons button:hover {
+            background: #00bf63;
+            color: white;
+        }
+        .footer {
+            text-align: center;
+            width: 100%;
+            padding: 15px;
+            background: white;
+            color: black;
+            font-weight: bold;
+            margin-top: auto;
+        }
+        .select-button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #006635;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        .select-button:hover {
+            background: #00bf63;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="" alt="Rolsa Technologies Logo">
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About Us</a>
+            <a href="/educational">Educational</a>
+            <a href="/faq">FAQ</a>
+            <a href="/products">Products</a>
+            <a href="/sign">
+                <img src="https://www.svgrepo.com/show/456992/account.svg" alt="User Icon">
+            </a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="about-text">
+            <h2>Consultation</h2>
+            <p>The sun already provides us with free energy, placing solar panels in your home can power your house at a cheaper price while saving energy or have a smart home energy management system that you can also install your very own charging stations.</p>
+        </div>
+        <div class="about-images">
+            <div>
+                <img src="https://media.licdn.com/dms/image/v2/D4E12AQH4tElBa-Z_HQ/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1688987472238?e=2147483647&v=beta&t=dWvuzTHXUOjCmLMM-Xh0bPmuLxWj0Kn4o5PlvR79_8w" alt="Solar Worker 1">
+                <div class="info-box">
+                    <h3>£1000 per charger</h3>
+                    <ul>
+                        <li>Efficient energy output</li>
+                        <li>Environmentally friendly</li>
+                        <li>Smart grid compatibility</li>
+                        <li>Easy installation process</li>
+                    </ul>
+                    <button class="select-button" onclick="redirectToPage('/solar')">Select</button>
+                </div>
+            </div>
+            <div>
+                <img src="https://images.squarespace-cdn.com/content/v1/5704fcea20c647241f7b52d3/1497448920432-DKE2DOMVPKVJKTP21E9O/domestic+smart+energy+management+system" alt="Solar Worker 2">
+                <div class="info-box">
+                    <h3>£1000 per charger</h3>
+                    <ul>
+                        <li>Efficient energy output</li>
+                        <li>Environmentally friendly</li>
+                        <li>Smart grid compatibility</li>
+                        <li>Easy installation process</li>
+                    </ul>
+                    <button class="select-button" onclick="redirectToPage('/ev')">Select</button>
+                </div>
+            </div>
+            <div>
+                <img src="https://solarplanet.uk/wp-content/uploads/2023/10/Solar-Panel-Sizes.jpg" alt="Solar Worker 3">
+                <div class="info-box">
+                    <h3>£1000 per charger</h3>
+                    <ul>
+                        <li>Efficient energy output</li>
+                        <li>Environmentally friendly</li>
+                        <li>Smart grid compatibility</li>
+                        <li>Easy installation process</li>
+                    </ul>
+                    <button class="select-button" onclick="redirectToPage('/house')">Select</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-buttons">
+        <button onclick="location.href='/installation'">Installation</button>
+        <button onclick="toggleAccessibility()">Accessibility</button>
+    </div>
+
+    <footer class="footer">
+        Footer
+    </footer>
+
+    <script>
+        // Redirect to specified page
+        function redirectToPage(url) {
+            window.location.href = url;
+        }
+
+        // Toggle Accessibility Box
+        function toggleAccessibilityBox() {
+            const box = document.getElementById('accessibility-box');
+            box.style.display = (box.style.display === 'block') ? 'none' : 'block';
+        }
+
+        // Close the Accessibility Box
+        function closeAccessibilityBox() {
+            const box = document.getElementById('accessibility-box');
+            box.style.display = 'none';
+        }
+
+        // Adjust Text Size
+        document.getElementById('text-size-slider').addEventListener('input', function() {
+            document.body.style.fontSize = this.value + 'px';
+        });
+
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        darkModeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+        });
+    </script>
+</body>
+</html>
