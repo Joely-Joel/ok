@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking | Rolsa</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About Us</a>
+            <a href="/educational">Educational</a>
+            <a href="/faq">FAQ</a>
+            <a href="/products">Products</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="about-text">
+            <h2>Book Your Consultation</h2>
+            <p>Choose a date and time for your consultation.</p>
+        </div>
+        <form id="booking-form" method="POST" action="/solar">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="date">Select Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Select Time:</label>
+            <input type="time" id="time" name="time" required>
+
+            <button type="submit" class="select-button">Confirm Booking</button>
+        </form>
+
+        <div id="confirmation-message" style="display: none; margin-top: 20px;">
+            <h3>Thank you! Your booking has been confirmed.</h3>
+        </div>
+    </div>
+
+    <footer class="footer">
+        Footer
+    </footer>
+
+    <script>
+        document.getElementById("booking-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const date = document.getElementById("date").value;
+            const time = document.getElementById("time").value;
+
+            if (!name || !date || !time) {
+                alert("Please fill in all details");
+                return;
+            }
+
+            document.getElementById("confirmation-message").style.display = "block";
+            document.getElementById("booking-form").reset();
+        });
+    </script>
+</body>
+</html>
