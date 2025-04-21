@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Tutor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #006635;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        header {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 10%;
+            background-color: white;
+            color: #737373;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        nav a {
+            color: #737373;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16.2px;
+        }
+        nav a img {
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+        }
+        .container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+        .section {
+            background-color: #006635;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            text-align: center;
+        }
+        .section h2 {
+            font-size: 34px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .section p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .bottom-buttons {
+            display: flex;
+            justify-content: center;
+            width: 80%;
+            max-width: 1100px;
+            padding: 20px 0;
+        }
+        .bottom-buttons button {
+            padding: 10px 20px;
+            background: white;
+            color: #006635;
+            border: 2px solid #006635;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 17px;
+            font-weight: bold;
+        }
+        .bottom-buttons button:hover {
+            background: #00bf63;
+            color: white;
+        }
+        footer {
+            text-align: center;
+            width: 100%;
+            padding: 15px;
+            background: white;
+            color: black;
+            font-weight: bold;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="" alt="Rolsa Technologies Logo">
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About Us</a>
+            <a href="/educational">Educational</a>
+            <a href="/faq">FAQ</a>
+            <a href="/products">Products</a>
+            <a href="/sign">
+                <img src="https://www.svgrepo.com/show/456992/account.svg" alt="User Icon">
+            </a>
+        </nav>
+    </header>
+    <div class="container">
+        <div id="home" class="section">
+            <h2>Welcome</h2>
+        </div>
+    </div>
+    <div class="bottom-buttons">
+        <button onclick="toggleAccessibility()">Accessibility</button>
+    </div>
+    <footer>
+        Footer
+    </footer>
+    <script>
+        function toggleAccessibility() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+</body>
+</html>
+
+
