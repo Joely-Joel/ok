@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Footprint Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #006635;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        header {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 10%;
+            background-color: white;
+            color: #737373;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        nav a {
+            color: #737373;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16.2px;
+        }
+        nav a img {
+            width: 24px;  /* Adjust to match the font size of the links */
+            height: 24px; /* Keep the height the same as the width */
+            vertical-align: middle; /* Align the icon with the middle of the text */
+        }
+        .container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+        .calculator {
+            background-color: #006635;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            text-align: center;
+        }
+        .calculator h2 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .calculator input, .calculator select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+            color: black;
+        }
+        .calculator button {
+            width: 100%;
+            padding: 12px;
+            background: white;
+            color: #006635;
+            border: 2px solid #006635;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 17px;
+            font-weight: bold;
+        }
+        .calculator button:hover {
+            background: #00bf63;
+            color: white;
+        }
+        .result {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            background: white;
+            color: #006635;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            width: 100%;
+            padding: 15px;
+            background: white;
+            color: black;
+            font-weight: bold;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="" alt="Rolsa Technologies Logo">
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About Us</a>
+            <a href="/educational">Educational</a>
+            <a href="/faq">FAQ</a>
+            <a href="/products">Products</a>
+            <a href="/sign">
+                <img src="https://www.svgrepo.com/show/456992/account.svg" alt="User Icon">
+            </a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="calculator">
+            <h2>Carbon Footprint Calculator</h2>
+
+            <label>Power (W)</label>
+            <input type="number" id="power" placeholder="Enter power in watts">
+
+            <label>Hours Used</label>
+            <input type="number" id="hours" placeholder="Enter hours used per day">
+
+            <label>Days Used</label>
+            <input type="number" id="days" placeholder="Enter days used per year">
+
+            <label>Select Emission Factor</label>
+            <select id="emissionFactor">
+                <option value="0.000233">Electricity (0.000233 kg CO₂ per Wh)</option>
+                <option value="0.000178">Natural Gas (0.000178 kg CO₂ per Wh)</option>
+                <option value="0.000125">Renewable Energy (0.000125 kg CO₂ per Wh)</option>
+            </select>
+
+            <button onclick="calculateFootprint()">Calculate</button>
+
+            <div id="result" class="result" style="display: none;"></div>
+        </div>
+    </div>
+
+    <footer>
+        Footer
+    </footer>
+
+    <script>
+        function calculateFootprint() {
+            let power = document.getElementById("power").value;
+            let hours = document.getElementById("hours").value;
+            let days = document.getElementById("days").value;
+            let emissionFactor = document.getElementById("emissionFactor").value;
+
+            if (power && hours && days && emissionFactor) {
+                let totalEmissions = (parseFloat(power) * parseFloat(hours) * parseFloat(days) * parseFloat(emissionFactor)) / 1000;
+                document.getElementById("result").innerHTML = "Carbon Footprint: " + totalEmissions.toFixed(2) + " kg CO₂";
+                document.getElementById("result").style.display = "block";
+            } else {
+                document.getElementById("result").innerHTML = "Please fill in all fields.";
+                document.getElementById("result").style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
