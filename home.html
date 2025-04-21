@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Rolsa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+            background-color: #ffffff;
+            color: #ffffff; /* Default Green text */
+            transition: all 0.3s ease;
+        }
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.solarpowerportal.co.uk/wp-content/uploads/2023/09/Solar_farm_generic_-_credit_Andreas_Gucklhorn_Unsplash.jpg') no-repeat center center fixed;
+            background-size: cover;
+            z-index: -1; /* Ensures it's behind the content */
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Semi-transparent black for dimming */
+            z-index: -1; /* Keeps the overlay behind the content */
+        }
+        header {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Centering the navigation links */
+            padding: 15px 10%;
+            background-color: #006635;
+            color: #ffffff;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16.2px;
+        }
+        nav a img {
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 80%;
+            max-width: 1100px;
+            padding: 40px 0;
+        }
+        .hero-text {
+            text-align: center;
+            max-width: 600px;
+        }
+        .hero-text h1 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .hero-text p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        .bottom-buttons {
+            display: flex;
+            justify-content: center;  /* Centering the buttons */
+            gap: 15px;
+            width: 80%;
+            max-width: 1100px;
+            padding: 20px 0;
+            margin-top: 20px;
+            flex-wrap: wrap;  /* Ensure buttons wrap in case the screen size is small */
+        }
+        .bottom-buttons button {
+            padding: 10px 20px;
+            background: #006635;
+            color: #ffffff;
+            border: 2px solid #006635;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 17px;
+            font-weight: bold;
+        }
+        .bottom-buttons button:hover {
+            background: #00bf63;
+            color: #ffffff;
+        }
+        .footer {
+            text-align: center;
+            width: 100%;
+            padding: 15px;
+            background: #006635;
+            color: #ffffff;
+            font-weight: bold;
+            margin-top: auto;
+        }
+
+        /* Accessibility Box Styles */
+        .accessibility-box {
+            position: fixed;
+            bottom: 60px; /* Positioned above the footer */
+            right: 20px; /* Positioned at the right */
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            color: #00bf63; /* Green text */
+            width: 300px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none; /* Initially hidden */
+        }
+
+        .accessibility-box label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        .accessibility-box input[type="range"] {
+            width: 100%;
+        }
+
+        /* Accessibility Button Position */
+        .accessibility-btn {
+            position: fixed;
+            bottom: 20px; /* Positioned below the accessibility box */
+            right: 20px;
+            background-color: #006635;
+            color: #ffffff;
+            border: none;
+            padding: 15px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        /* Hover effect for Accessibility Button */
+        .accessibility-btn:hover {
+            background-color: #00bf63; /* Green background */
+            color: #ffffff; /* White text */
+            border: 2px solid #006635;
+        }
+
+        .accessibility-btn:focus {
+            outline: none;
+        }
+
+        /* Dark Mode Button Styles */
+        #dark-mode-toggle {
+            padding: 15px 25px;
+            font-size: 18px;
+            background-color: #006635;
+            color: #ffffff;
+            border: 2px solid #006635;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            z-index: 1001;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        /* Dark Mode Button Hover Effect */
+        #dark-mode-toggle:hover {
+            background-color: #00bf63;
+            color: #ffffff;
+            border: 2px solid #006635;
+        }
+
+        #dark-mode-toggle:focus {
+            outline: none;
+        }
+
+        /* Dark Mode Styles */
+        .dark-mode {
+            background-color: #404040; /* Dark background */
+            color: #ffffff; /* Light yellow text */
+        }
+
+        /* Add this block to style the dark mode button when dark mode is on */
+        .dark-mode #dark-mode-toggle {
+            background-color: #404040; /* Dark background for button */
+            color: #ffffff; /* Light yellow text */
+            border: 2px solid #feeca9; /* Border with light yellow color */
+        }
+
+        .dark-mode #dark-mode-toggle:hover {
+            background-color: #fef0bc; /* Green background for hover */
+            color: #4d4d4d; /* White text on hover */
+            border: 2px solid #feeca9; /* Green border on hover */
+        }
+
+        .dark-mode header {
+            background-color: #404040;
+            color: #ffffff; /* Light yellow text */
+        }
+        .dark-mode nav a {
+            color: #ffffff; /* Light yellow text */
+        }
+        .dark-mode nav a:hover {
+            color: #ffffff; /* Green text on hover */
+        }
+        .dark-mode .hero-text h1 {
+            color: #ffffff; /* Light yellow text */
+        }
+        .dark-mode .bottom-buttons button {
+            background: #404040;
+            color: #ffffff;
+            border: 2px solid #feeca9;
+        }
+        .dark-mode .bottom-buttons button:hover {
+            background: #fef0bc;
+            color: #4d4d4d; /* Green text on hover */
+        }
+        .dark-mode .footer {
+            background-color: #404040;
+            color: #ffffff; /* Light yellow text */
+        }
+        .dark-mode .accessibility-box {
+            background-color: #404040;
+            color: #ffffff; /* Light yellow text */
+        }
+        .dark-mode .accessibility-btn {
+            background-color: #404040;
+            color: #ffffff;
+            border: 2px solid #feeca9;
+        }
+
+        .dark-mode .accessibility-btn:hover {
+            background-color: #fef0bc;
+            color: #4d4d4d; /* Green text on hover */
+        }
+
+        .dark-mode .hero-text h1 {
+            color: #ffffff; /* Light yellow */
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div> <!-- Background Image -->
+    <div class="overlay"></div> <!-- Dim Overlay -->
+
+    <header id="header">
+        <img src="" alt="Rolsa Technologies Logo">
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About Us</a>
+            <a href="/educational">Educational</a>
+            <a href="/faq">FAQ</a>
+            <a href="/products">Products</a>
+            <a href="/sign">
+                <img src="https://www.svgrepo.com/show/456992/account.svg" alt="User Icon">
+            </a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="hero-text">
+            <h1>STAY GREEN,
+                 SAVE ENERGY</h1>
+        </div>
+    </div>
+
+    <div class="bottom-buttons">
+        <button onclick="redirectToPage('/about')">More About Us</button>
+        <button onclick="redirectToPage('/service')">Our Service</button>
+    </div>
+
+    <!-- Accessibility Box -->
+    <div class="accessibility-box" id="accessibility-box">
+        <label>
+            Text Size: <input type="range" id="text-size-slider" min="14" max="30" value="16">
+        </label>
+        <label>
+            Dark Mode: <button id="dark-mode-toggle">Toggle Dark Mode</button>
+        </label>
+    </div>
+
+    <!-- Accessibility Button -->
+    <button class="accessibility-btn" onclick="toggleAccessibilityBox()">Accessibility</button>
+
+    <footer class="footer">
+        <p>&copy; 2025 Rolsa Technologies. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Toggle Accessibility Box
+        function toggleAccessibilityBox() {
+            const box = document.getElementById('accessibility-box');
+            box.style.display = (box.style.display === 'block') ? 'none' : 'block';
+        }
+
+        // Close the Accessibility Box
+        function closeAccessibilityBox() {
+            const box = document.getElementById('accessibility-box');
+            box.style.display = 'none';
+        }
+
+        // Adjust Text Size
+        document.getElementById('text-size-slider').addEventListener('input', function() {
+            document.body.style.fontSize = this.value + 'px';
+        });
+
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        darkModeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        // Redirect to specified page
+        function redirectToPage(url) {
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>
