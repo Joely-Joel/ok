@@ -12,17 +12,13 @@
         }
         body {
             font-family: Arial, sans-serif;
-            background-color: #006635;
+            background-color: #024223;
             color: white;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        body.dark-mode {
-            background-color: #333;
-            color: beige;
+            transition: all 0.3s ease;
         }
         header {
             width: 100%;
@@ -30,8 +26,8 @@
             align-items: center;
             justify-content: center;
             padding: 15px 10%;
-            background-color: white;
-            color: #737373;
+            background-color: #006635;
+            color: #ffffff;
         }
         nav {
             display: flex;
@@ -39,7 +35,7 @@
             gap: 20px;
         }
         nav a {
-            color: #737373;
+            color: #ffffff;
             text-decoration: none;
             font-weight: bold;
             font-size: 16.2px;
@@ -48,6 +44,37 @@
             width: 24px;
             height: 24px;
             vertical-align: middle;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 80%;
+            max-width: 1100px;
+            padding: 40px 0;
+        }
+        .about-text {
+            flex: 1;
+            max-width: 48%;
+        }
+        .about-text h2 {
+            font-size: 34px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .about-text p {
+            font-size: 15.9px;
+            line-height: 1.5;
+        }
+        .about-image {
+            flex: 1;
+            text-align: right;
+            max-width: 48%;
+        }
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
         }
         .auth-container {
             background-color: #006635;
@@ -58,9 +85,7 @@
             text-align: center;
             margin-top: 50px;
         }
-        body.dark-mode .auth-container {
-            background-color: #444;
-        }
+       
         .auth-container h2 {
             font-size: 34px;
             font-weight: bold;
@@ -123,10 +148,159 @@
             width: 100%;
             padding: 15px;
             background: white;
-            color: black;
+            background: #006635;
             font-weight: bold;
             margin-top: auto;
         }
+        /* Accessibility Box */
+        .accessibility-box {
+            position: fixed;
+            bottom: 60px;
+            right: 20px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            color: #00bf63;
+            width: 300px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none;
+        }
+        .accessibility-box label {
+            display: block;
+            margin: 10px 0;
+        }
+        .accessibility-box input[type="range"] {
+            width: 100%;
+        }
+
+        /* Accessibility Button */
+        .accessibility-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #006635;
+            color: #ffffff;
+            border: none;
+            padding: 15px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+        .accessibility-btn:hover {
+            background-color: #00bf63;
+            color: white;
+            border: 2px solid #006635;
+        }
+
+        /* Dark Mode Button */
+        #dark-mode-toggle {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #006635;
+            color: #ffffff;
+            border: 2px solid #006635;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        #dark-mode-toggle:hover {
+            background-color: #00bf63;
+            color: white;
+            border: 2px solid #006635;
+        }
+
+        #dark-mode-toggle:focus {
+            outline: none;
+        }
+
+        /* Dark Mode Styles */
+        .dark-mode {
+            background-color: #404040;
+            color: #ffffff; /* Light yellow text */
+        }
+
+        /* Add this block to style the dark mode button when dark mode is on */
+        .dark-mode #dark-mode-toggle {
+            background-color: #4d4d4d; /* Dark background for button */
+            color: #feeca9; /* Light yellow text */
+            border: 2px solid #feeca9; /* Border with light yellow color */
+        }
+
+        .dark-mode #dark-mode-toggle:hover {
+            background-color: #fef0bc; /* Green background for hover */
+            color: #4d4d4d; /* White text on hover */
+            border: 2px solid #feeca9; /* Green border on hover */
+        }
+
+        .dark-mode header {
+            background-color: #333333;
+            color: #ffffff; /* Light yellow text */
+        }
+        .dark-mode nav a {
+            color: #ffffff; /* Light yellow text */
+        }
+        .dark-mode nav a:hover {
+            color: #ffffff; /* Green text on hover */
+        }
+        .dark-mode .footer {
+            background-color: #333333;
+            color: #ffffff;
+        }
+        .dark-mode .bottom-buttons button {
+            background: #4d4d4d;
+            color: #feeca9;
+            border: 2px solid #feeca9;
+        }
+        .dark-mode .bottom-buttons button:hover {
+            background: #fef0bc;
+            color: #4d4d4d;
+        }
+        .dark-mode .accessibility-box {
+            background-color: #4d4d4d;
+            color: #feeca9;
+        }
+        .dark-mode .accessibility-btn {
+            background-color: #4d4d4d;
+            color: #feeca9;
+            border: 2px solid #feeca9;
+        }
+        .dark-mode .accessibility-btn:hover {
+            background-color: #fef0bc;
+            color: #4d4d4d;
+        }
+        .dark-mode .auth-container {
+        background-color: #333333;
+        color: #feeca9;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        .dark-mode .auth-container input[type="text"],
+        .dark-mode .auth-container input[type="email"],
+        .dark-mode .auth-container input[type="password"] {
+            background-color: #555555;
+            color: #ffffff;
+            border: 1px solid #888;
+        }
+
+        .dark-mode .auth-container input[type="submit"] {
+            background-color: #feeca9;
+            color: #333333;
+        }
+
+        .dark-mode .auth-container input[type="submit"]:hover {
+            background-color: #fef0bc;
+            color: #333333;
+        }
+
+        .dark-mode .auth-container .toggle-link {
+            color: #fef0bc;
+        }
+        
     </style>
 </head>
 <body>
@@ -138,6 +312,7 @@
             <a href="/educational">Educational</a>
             <a href="/faq">FAQ</a>
             <a href="/products">Products</a>
+            <a href="/service">Service</a>
             <a href="/sign">
                 <img src="https://www.svgrepo.com/show/456992/account.svg" alt="User Icon">
             </a>
@@ -167,14 +342,23 @@
         </div>
     </div>
 
-    <!-- Only keeping the Accessibility button -->
-    <div class="bottom-buttons">
-        <button onclick="toggleAccessibility()">Accessibility</button>
+    <!-- Accessibility Box -->
+    <div class="accessibility-box" id="accessibility-box">
+        <label>
+            Text Size: <input type="range" id="text-size-slider" min="10" max="22" value="16">
+        </label>
+        <label>
+            Dark Mode: <button id="dark-mode-toggle">Toggle Dark Mode</button>
+        </label>
     </div>
 
-    <footer>
-        Footer
+    <!-- Accessibility Button -->
+    <button class="accessibility-btn" onclick="toggleAccessibilityBox()">Accessibility</button>
+
+    <footer class="footer">
+        <p>&copy; 2025 Rolsa Technologies. All rights reserved.</p>
     </footer>
+
 
     <script>
         function toggleForms() {
@@ -184,9 +368,40 @@
             signupForm.style.display = signupForm.style.display === 'none' ? 'block' : 'none';
         }
 
-        function toggleAccessibility() {
+        // Toggle Accessibility Box
+        function toggleAccessibilityBox() {
+            const box = document.getElementById('accessibility-box');
+            box.style.display = (box.style.display === 'block') ? 'none' : 'block';
+        }
+
+        // Close the Accessibility Box
+        function closeAccessibilityBox() {
+            const box = document.getElementById('accessibility-box');
+            box.style.display = 'none';
+        }
+
+        const slider = document.getElementById("text-size-slider");
+        const paragraphs = document.querySelectorAll("p");
+        const h2s = document.querySelectorAll("h2");
+
+        slider.addEventListener("input", () => {
+        const baseSize = parseInt(slider.value); // paragraph base
+        const h2Size = (baseSize * 2.3).toFixed(1); // apply ratio
+
+        paragraphs.forEach(p => p.style.fontSize = `${baseSize}px`);
+        h2s.forEach(h2 => h2.style.fontSize = `${h2Size}px`);
+        // h1 stays the same — no changes
+        });
+
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        darkModeToggle.addEventListener('click', function() {
             document.body.classList.toggle('dark-mode');
+        });
+
+        // Redirect to specified page
+        function redirectToPage(url) {
+            window.location.href = url;
         }
     </script>
-
 
