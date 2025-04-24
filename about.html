@@ -184,8 +184,8 @@
 
         /* Add this block to style the dark mode button when dark mode is on */
         .dark-mode #dark-mode-toggle {
-            background-color: #404040; /* Dark background for button */
-            color: #ffffff; /* Light yellow text */
+            background-color: #4d4d4d; /* Dark background for button */
+            color: #feeca9; /* Light yellow text */
             border: 2px solid #feeca9; /* Border with light yellow color */
         }
 
@@ -196,7 +196,7 @@
         }
 
         .dark-mode header {
-            background-color: #404040;
+            background-color: #333333;
             color: #ffffff; /* Light yellow text */
         }
         .dark-mode nav a {
@@ -206,8 +206,8 @@
             color: #ffffff; /* Green text on hover */
         }
         .dark-mode .footer {
-            background-color: #404040;
-            color: #feeca9;
+            background-color: #333333;
+            color: #ffffff;
         }
         .dark-mode .bottom-buttons button {
             background: #4d4d4d;
@@ -215,8 +215,8 @@
             border: 2px solid #feeca9;
         }
         .dark-mode .bottom-buttons button:hover {
-            background: #404040;
-            color: #fef0bc;
+            background: #fef0bc;
+            color: #4d4d4d;
         }
         .dark-mode .accessibility-box {
             background-color: #4d4d4d;
@@ -228,8 +228,8 @@
             border: 2px solid #feeca9;
         }
         .dark-mode .accessibility-btn:hover {
-            background-color: #404040;
-            color: #fef0bc;
+            background-color: #fef0bc;
+            color: #4d4d4d;
         }
     </style>
 </head>
@@ -242,6 +242,7 @@
             <a href="/educational">Educational</a>
             <a href="/faq">FAQ</a>
             <a href="/products">Products</a>
+            <a href="/service">Service</a>
             <a href="/sign">
                 <img src="https://www.svgrepo.com/show/456992/account.svg" alt="User Icon">
             </a>
@@ -259,13 +260,14 @@
     </div>
 
     <div class="bottom-buttons">
-        <button onclick="window.location.href='/service'">Our Services</button>
+        <button onclick="window.location.href='/educational'">Educational</button>
+        <button onclick="window.location.href='/faq'">FAQ</button>
     </div>
 
     <!-- Accessibility Box -->
     <div class="accessibility-box" id="accessibility-box">
         <label>
-            Text Size: <input type="range" id="text-size-slider" min="14" max="30" value="16">
+            Text Size: <input type="range" id="text-size-slider" min="10" max="22" value="16">
         </label>
         <label>
             Dark Mode: <button id="dark-mode-toggle">Toggle Dark Mode</button>
@@ -292,9 +294,17 @@
             box.style.display = 'none';
         }
 
-        // Adjust Text Size
-        document.getElementById('text-size-slider').addEventListener('input', function() {
-            document.body.style.fontSize = this.value + 'px';
+        const slider = document.getElementById("text-size-slider");
+        const paragraphs = document.querySelectorAll("p");
+        const h2s = document.querySelectorAll("h2");
+
+        slider.addEventListener("input", () => {
+        const baseSize = parseInt(slider.value); // paragraph base
+        const h2Size = (baseSize * 2.3).toFixed(1); // apply ratio
+
+        paragraphs.forEach(p => p.style.fontSize = `${baseSize}px`);
+        h2s.forEach(h2 => h2.style.fontSize = `${h2Size}px`);
+        // h1 stays the same — no changes
         });
 
         // Dark Mode Toggle
