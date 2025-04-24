@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carbon Footprint Calculator</title>
+    <title>Consultation | Rolsa</title>
     <style>
         * {
             margin: 0;
@@ -25,8 +25,8 @@
             align-items: center;
             justify-content: center;
             padding: 15px 10%;
+            background-color: white;
             background-color: #006635;
-            color: #ffffff;
         }
         nav {
             display: flex;
@@ -40,78 +40,85 @@
             font-size: 16.2px;
         }
         nav a img {
-            width: 24px;  /* Adjust to match the font size of the links */
-            height: 24px; /* Keep the height the same as the width */
-            vertical-align: middle; /* Align the icon with the middle of the text */
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
         }
         .container {
-            width: 100%;
             display: flex;
-            justify-content: center;
             align-items: center;
-            margin-top: 50px;
+            justify-content: space-between;
+            width: 80%;
+            max-width: 1100px;
+            padding: 40px 0;
+            gap: 20px;
+            flex-wrap: wrap;
         }
-        .calculator {
-            background-color: #006635;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 500px;
+        .about-text {
+            flex: 1;
+            max-width: 48%;
+        }
+        .about-text h2 {
+            font-size: 34px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .about-text p {
+            font-size: 15.9px;
+            line-height: 1.5;
+        }
+        .about-images {
+            flex: 2;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .about-images div {
             text-align: center;
         }
-        .calculator h2 {
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 20px;
+        .about-images img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
         }
-        .calculator input, .calculator select {
+        .info-box {
             width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            border: none;
-            font-size: 16px;
-            color: black;
-        }
-        .calculator button {
-            width: 100%;
-            padding: 12px;
-            background: white;
+            background-color: #ffffff;
             color: #006635;
-            border: 2px solid #006635;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 17px;
-            font-weight: bold;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            margin-top: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s, color 0.3s;
         }
-        .calculator button:hover {
-            background: #00bf63;
-            color: white;
-        }
-        .result {
-            margin-top: 15px;
+        .info-box h3 {
             font-size: 18px;
             font-weight: bold;
-            background: white;
-            color: #006635;
-            padding: 10px;
-            border-radius: 5px;
+            margin-bottom: 10px;
         }
-        .footer {
-            text-align: center;
-            width: 100%;
-            padding: 15px;
-            background: #006635;
-            color: #ffffff;
-            font-weight: bold;
-            margin-top: auto;
+        .info-box ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        .info-box ul li {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .info-box:hover {
+            background: #00bf63;
+            color: white;
         }
         .bottom-buttons {
             display: flex;
             justify-content: center;
+            gap: 15px;
             width: 80%;
             max-width: 1100px;
             padding: 20px 0;
+            margin-top: 20px;
         }
         .bottom-buttons button {
             padding: 10px 20px;
@@ -122,19 +129,34 @@
             border-radius: 5px;
             font-size: 17px;
             font-weight: bold;
+            transition: background 0.3s, color 0.3s;
         }
         .bottom-buttons button:hover {
             background: #00bf63;
             color: white;
         }
-        footer {
+        .footer {
             text-align: center;
             width: 100%;
             padding: 15px;
-            background: white;
             background: #006635;
+            color: #ffffff;
             font-weight: bold;
             margin-top: auto;
+        }
+        .select-button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #006635;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        .select-button:hover {
+            background: #00bf63;
         }
         /* Accessibility Box */
         .accessibility-box {
@@ -257,63 +279,47 @@
             background-color: #fef0bc;
             color: #4d4d4d;
         }
-        .dark-mode .auth-container {
-        background-color: #333333;
-        color: #feeca9;
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        /* Dark Mode Styles for info-box */
+        .dark-mode .info-box {
+            background-color: #404040; /* Dark background for info-box */
+            color: #feeca9; /* Light yellow text for info-box */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        .dark-mode .auth-container input[type="text"],
-        .dark-mode .auth-container input[type="email"],
-        .dark-mode .auth-container input[type="password"] {
-            background-color: #555555;
-            color: #ffffff;
-            border: 1px solid #888;
+        .dark-mode .info-box h3 {
+            color: #feeca9; /* Light yellow text for title in dark mode */
         }
 
-        .dark-mode .auth-container input[type="submit"] {
-            background-color: #feeca9;
-            color: #333333;
+        .dark-mode .info-box ul li {
+            color: #fef0bc; /* Lighter yellow for list items */
         }
 
-        .dark-mode .auth-container input[type="submit"]:hover {
-            background-color: #fef0bc;
-            color: #333333;
+        .dark-mode .info-box:hover {
+            background: #333333; /* Green background on hover */
+            color: white; /* White text on hover */
+        }
+        .dark-mode .select-button {
+            background: #333333; /* Dark background */
+            color: #ffffff; /* Light yellow text */
         }
 
-        .dark-mode .calculator {
-        background-color: #333333;
-        color: #fef0bc;
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-    }
-
-        .dark-mode .calculator input, .dark-mode .calculator select {
-            background-color: #555555;
-            color: #ffffff;
-            border: 1px solid #888;
+        .dark-mode .select-button:hover {
+            background: #fef0bc; /* Slightly lighter background on hover */
+            color: #ffffff; /* Light yellow text on hover */
+        }
+        #logo {
+            content: url('Rolsa Technologies (1).png');
         }
 
-        .dark-mode .calculator button {
-            background: #feeca9;
-            color: #333333;
-            border: 2px solid #feeca9;
+        /* Dark Mode Image */
+        .dark-mode #logo {
+            content: url('Rolsa Technologies.png');
         }
-
-        .dark-mode .calculator button:hover {
-            background: #fef0bc;
-            color: #333333;
-        }
-
-        .dark-mode .result {
-            background: #555555;
-            color: #feeca9;
-        }
-
     </style>
 </head>
 <body>
     <header>
-        <img src="" alt="Rolsa Technologies Logo">
+        <img id="theme-image" src="Rolsa Technologies (1).png" width="140" height="auto" />
         <nav>
             <a href="/">Home</a>
             <a href="/about">About Us</a>
@@ -327,29 +333,55 @@
     </header>
 
     <div class="container">
-        <div class="calculator">
-            <h2>Carbon Footprint Calculator</h2>
-
-            <label>Power (W)</label>
-            <input type="number" id="power" placeholder="Enter power in watts">
-
-            <label>Hours Used</label>
-            <input type="number" id="hours" placeholder="Enter hours used per day">
-
-            <label>Days Used</label>
-            <input type="number" id="days" placeholder="Enter days used per year">
-
-            <label>Select Emission Factor</label>
-            <select id="emissionFactor">
-                <option value="0.000233">Electricity (0.000233 kg CO₂ per Wh)</option>
-                <option value="0.000178">Natural Gas (0.000178 kg CO₂ per Wh)</option>
-                <option value="0.000125">Renewable Energy (0.000125 kg CO₂ per Wh)</option>
-            </select>
-
-            <button onclick="calculateFootprint()">Calculate</button>
-
-            <div id="result" class="result" style="display: none;"></div>
+        <div class="about-text">
+            <h2>Consultation</h2>
+            <p>The sun already provides us with free energy, placing solar panels in your home can power your house at a cheaper price while saving energy or have a smart home energy management system that you can also install your very own charging stations.</p>
         </div>
+        <div class="about-images">
+            <div>
+                <img src="https://media.licdn.com/dms/image/v2/D4E12AQH4tElBa-Z_HQ/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1688987472238?e=2147483647&v=beta&t=dWvuzTHXUOjCmLMM-Xh0bPmuLxWj0Kn4o5PlvR79_8w" alt="Solar Worker 1">
+                <div class="info-box">
+                    <h3>£1000 per charger</h3>
+                    <ul>
+                        <li>Efficient energy output</li>
+                        <li>Environmentally friendly</li>
+                        <li>Smart grid compatibility</li>
+                        <li>Easy installation process</li>
+                    </ul>
+                    <button class="select-button" onclick="redirectToPage('/solar')">Select</button>
+                </div>
+            </div>
+            <div>
+                <img src="https://images.squarespace-cdn.com/content/v1/5704fcea20c647241f7b52d3/1497448920432-DKE2DOMVPKVJKTP21E9O/domestic+smart+energy+management+system" alt="Solar Worker 2">
+                <div class="info-box">
+                    <h3>£1000 per charger</h3>
+                    <ul>
+                        <li>Efficient energy output</li>
+                        <li>Environmentally friendly</li>
+                        <li>Smart grid compatibility</li>
+                        <li>Easy installation process</li>
+                    </ul>
+                    <button class="select-button" onclick="redirectToPage('/solar')">Select</button>
+                </div>
+            </div>
+            <div>
+                <img src="https://solarplanet.uk/wp-content/uploads/2023/10/Solar-Panel-Sizes.jpg" alt="Solar Worker 3">
+                <div class="info-box">
+                    <h3>£1000 per charger</h3>
+                    <ul>
+                        <li>Efficient energy output</li>
+                        <li>Environmentally friendly</li>
+                        <li>Smart grid compatibility</li>
+                        <li>Easy installation process</li>
+                    </ul>
+                    <button class="select-button" onclick="redirectToPage('/solar')">Select</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-buttons">
+        <button onclick="location.href='/installation'">Installation</button>
     </div>
 
     <!-- Accessibility Box -->
@@ -369,22 +401,13 @@
         <p>&copy; 2025 Rolsa Technologies. All rights reserved.</p>
     </footer>
 
-    <script>
-        function calculateFootprint() {
-            let power = document.getElementById("power").value;
-            let hours = document.getElementById("hours").value;
-            let days = document.getElementById("days").value;
-            let emissionFactor = document.getElementById("emissionFactor").value;
 
-            if (power && hours && days && emissionFactor) {
-                let totalEmissions = (parseFloat(power) * parseFloat(hours) * parseFloat(days) * parseFloat(emissionFactor)) / 1000;
-                document.getElementById("result").innerHTML = "Carbon Footprint: " + totalEmissions.toFixed(2) + " kg CO₂";
-                document.getElementById("result").style.display = "block";
-            } else {
-                document.getElementById("result").innerHTML = "Please fill in all fields.";
-                document.getElementById("result").style.display = "block";
-            }
+    <script>
+        // Redirect to specified page
+        function redirectToPage(url) {
+            window.location.href = url;
         }
+
         // Toggle Accessibility Box
         function toggleAccessibilityBox() {
             const box = document.getElementById('accessibility-box');
@@ -411,15 +434,22 @@
         });
 
         // Dark Mode Toggle
-        const darkModeToggle = document.getElementById('dark-mode-toggle');
-        darkModeToggle.addEventListener('click', function() {
-            document.body.classList.toggle('dark-mode');
-        });
+        const toggleButton = document.getElementById('dark-mode-toggle');
+    const body = document.body;
+    const themeImage = document.getElementById('theme-image');
 
-        // Redirect to specified page
-        function redirectToPage(url) {
-            window.location.href = url;
+    toggleButton.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+
+        // Switch image source if needed
+        if (body.classList.contains('dark-mode')) {
+            themeImage.src = 'Rolsa Technologies.png';
+        } else {
+            themeImage.src = 'Rolsa Technologies (1).png';
         }
+    });
+        
+        
     </script>
 </body>
 </html>
